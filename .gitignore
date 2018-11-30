@@ -7,3 +7,5 @@ out/
 
 package-json.lock
 yarn.lock
+
+.idea
