@@ -4,8 +4,10 @@
   "description": "An application for keeping track of the things you need to pack.",
   "main": "app/main.js",
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron-forge start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "keywords": [
     "electron"
@@ -13,7 +15,8 @@
   "author": "Steve Kinney",
   "license": "MIT",
   "dependencies": {
-    "electron-compile": "6.4.2",
+    "electron-forge": "^5.2.3",
+    "electron-squirrel-startup": "^1.0.0",
     "idb": "2.0.4",
     "prop-types": "15.6.0",
     "react": "16.2.0",
@@ -25,15 +28,48 @@
     "babel-plugin-dynamic-import-node": "1.2.0",
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-plugin-system-import-transformer": "3.1.0",
-    "babel-plugin-transform-async-to-generator": "6.24.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-es2015-classes": "6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-env": "1.6.1",
-    "babel-preset-react": "6.24.1",
-    "electron-prebuilt-compile": "1.8.2-beta.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-compile": "^6.4.3",
+    "electron-prebuilt-compile": "3.0.10",
     "electron-rebuild": "1.7.3",
     "eslint": "4.16.0",
     "eslint-plugin-import": "2.8.0"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "jetsetter"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "jetsetter"
+      }
+    }
   }
 }
